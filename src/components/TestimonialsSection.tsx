@@ -59,17 +59,13 @@ export default function TestimonialsSection() {
         </motion.div>
       </div>
 
-      {/* Marquee testimonials */}
-      <div className="relative overflow-hidden">
-        <motion.div
-          className="flex gap-6 px-6"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 60, ease: 'linear', repeat: Infinity }}
-        >
-          {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+      {/* Marquee testimonials (CSS-driven for reliable mobile playback) */}
+      <div className="marquee">
+        <div className="marquee-track gap-6 px-3" style={{ animationDuration: '50s' }}>
+          {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
             <div
               key={i}
-              className="shrink-0 w-[340px] md:w-[440px] liquid-glass rounded-2xl p-7 md:p-8"
+              className="shrink-0 w-[320px] md:w-[440px] liquid-glass rounded-2xl p-7 md:p-8"
             >
               <Quote className="w-6 h-6 text-[var(--gold)] mb-4" />
               <p className="font-display text-lg md:text-xl text-[var(--ivory)] leading-snug mb-6 font-light">
@@ -81,24 +77,20 @@ export default function TestimonialsSection() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Press logos strip */}
       <div className="mt-16 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="text-[10px] text-[var(--muted)] tracking-[0.35em] uppercase mb-6 text-center">As featured in</div>
-        <div className="relative overflow-hidden border-y border-[var(--line)] py-6">
-          <motion.div
-            className="flex gap-16 whitespace-nowrap"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 30, ease: 'linear', repeat: Infinity }}
-          >
-            {[...PRESS, ...PRESS, ...PRESS].map((name, i) => (
-              <span key={i} className="font-display text-2xl md:text-3xl text-[var(--ivory)]/35 font-light tracking-tight">
+        <div className="marquee border-y border-[var(--line)] py-6">
+          <div className="marquee-track gap-16" style={{ animationDuration: '32s' }}>
+            {[...PRESS, ...PRESS].map((name, i) => (
+              <span key={i} className="font-display text-2xl md:text-3xl text-[var(--ivory)]/35 font-light tracking-tight whitespace-nowrap">
                 {name}
               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

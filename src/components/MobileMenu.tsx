@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -15,72 +16,85 @@ const LINKS = [
 export default function MobileMenu({ dark = false }: { dark?: boolean }) {
   const [open, setOpen] = useState(false);
 
+  // Lock body scroll while the menu is open.
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  // Overlay is portalled to <body> so backdrop-filter/transform ancestors
+  // (e.g. the liquid-glass header) can't trap its position:fixed.
+  const overlay = (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-[200] flex flex-col"
+          style={{ background: 'rgba(7,5,2,0.98)', backdropFilter: 'blur(20px)' }}
+        >
+          <div className="flex items-center justify-between px-6 pt-6">
+            <span className="font-display text-3xl tracking-tight text-[var(--ivory)]">SBP</span>
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-[var(--ivory)]"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          <nav className="flex-1 flex flex-col justify-center px-8 gap-1">
+            {LINKS.map((l, i) => (
+              <motion.div
+                key={l.label}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.08 + i * 0.06 }}
+              >
+                <Link
+                  to={l.to}
+                  state={l.scrollTo ? { scrollTo: l.scrollTo } : undefined}
+                  onClick={() => setOpen(false)}
+                  className="font-display text-4xl text-[var(--ivory)] hover:text-[var(--gold-soft)] transition-colors py-2.5 block"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  {l.label}
+                </Link>
+              </motion.div>
+            ))}
+          </nav>
+
+          <div className="px-8 pb-10">
+            <a
+              href="tel:9316004242"
+              className="btn-gold w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-medium tracking-wide"
+            >
+              <span>Call +91 93160 04242</span>
+            </a>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
   return (
     <div className="md:hidden">
       <button
         onClick={() => setOpen(true)}
         aria-label="Open menu"
         className={`w-10 h-10 flex items-center justify-center rounded-full border transition-colors ${
-          dark
-            ? 'border-white/15 text-[var(--ivory)]'
-            : 'border-white/20 text-[var(--ivory)]'
+          dark ? 'border-white/15 text-[var(--ivory)]' : 'border-white/20 text-[var(--ivory)]'
         }`}
       >
         <Menu className="w-5 h-5" />
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[120] bg-[var(--bg)]/98 backdrop-blur-xl flex flex-col"
-          >
-            <div className="flex items-center justify-between px-6 pt-6">
-              <span className="font-display text-3xl tracking-tight text-[var(--ivory)]">SBP</span>
-              <button
-                onClick={() => setOpen(false)}
-                aria-label="Close menu"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-[var(--ivory)]"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <nav className="flex-1 flex flex-col justify-center px-8 gap-2">
-              {LINKS.map((l, i) => (
-                <motion.div
-                  key={l.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.08 + i * 0.06 }}
-                >
-                  <Link
-                    to={l.to}
-                    state={l.scrollTo ? { scrollTo: l.scrollTo } : undefined}
-                    onClick={() => setOpen(false)}
-                    className="font-display text-4xl text-[var(--ivory)] hover:text-[var(--gold-soft)] transition-colors py-2 block"
-                    style={{ letterSpacing: '-0.02em' }}
-                  >
-                    {l.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-
-            <div className="px-8 pb-10">
-              <a
-                href="tel:9316004242"
-                className="btn-gold w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-medium tracking-wide"
-              >
-                <span>Call +91 93160 04242</span>
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {createPortal(overlay, document.body)}
     </div>
   );
 }

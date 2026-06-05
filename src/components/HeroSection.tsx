@@ -17,11 +17,11 @@ export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   // Mobile gets a dedicated vertical-friendly clip; desktop the wide one.
-  const [videoSrc, setVideoSrc] = useState('/backgroundvideonew.mp4');
+  const [videoSrc, setVideoSrc] = useState('/backgroundvideo.mp4');
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)');
-    const apply = () => setVideoSrc(mq.matches ? '/mobilevideo.mp4' : '/backgroundvideonew.mp4');
+    const apply = () => setVideoSrc(mq.matches ? '/mobilevideo.mp4' : '/backgroundvideo.mp4');
     apply();
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
