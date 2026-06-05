@@ -49,19 +49,20 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Launcher */}
+      {/* Launcher — !fixed so it overrides btn-gold's position:relative */}
       <motion.button
         onClick={() => setOpen((o) => !o)}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.6, type: 'spring', stiffness: 200, damping: 18 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Open Rachit AI"
-        className="fixed bottom-5 right-5 z-[90] flex items-center gap-2.5 btn-gold rounded-full pl-4 pr-5 py-3 shadow-2xl"
+        className="!fixed bottom-5 right-5 z-[90] flex items-center gap-2.5 rounded-full pl-4 pr-5 py-3 shadow-2xl text-[var(--bg)] font-semibold tracking-wide"
+        style={{
+          background: 'linear-gradient(135deg, #e6c98c 0%, #c9a14a 100%)',
+          boxShadow: '0 10px 40px rgba(201,161,74,0.45)',
+        }}
       >
         {open ? <X className="w-5 h-5" /> : <Sparkles className="w-5 h-5" />}
-        <span className="text-sm font-semibold tracking-wide">Rachit AI</span>
+        <span className="text-sm">Rachit AI</span>
       </motion.button>
 
       <AnimatePresence>
@@ -71,7 +72,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed z-[95] bottom-20 right-4 left-4 sm:left-auto sm:right-5 sm:w-[400px] h-[70vh] sm:h-[560px] max-h-[640px] flex flex-col rounded-2xl overflow-hidden liquid-glass"
+            className="!fixed z-[95] bottom-20 right-4 left-4 sm:left-auto sm:right-5 sm:w-[400px] h-[70vh] sm:h-[560px] max-h-[640px] flex flex-col rounded-2xl overflow-hidden liquid-glass"
           >
             {/* Header */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--line)] bg-[var(--bg-elev)]">
