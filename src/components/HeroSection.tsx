@@ -17,11 +17,11 @@ export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   // Mobile gets a dedicated vertical-friendly clip; desktop the wide one.
-  const [videoSrc, setVideoSrc] = useState('/backgroundvideo.mp4');
+  const [videoSrc, setVideoSrc] = useState('/backgroundvideonew.mp4');
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)');
-    const apply = () => setVideoSrc(mq.matches ? '/mobilevideo.mp4' : '/backgroundvideo.mp4');
+    const apply = () => setVideoSrc(mq.matches ? '/mobilevideo.mp4' : '/backgroundvideonew.mp4');
     apply();
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
@@ -73,14 +73,25 @@ export default function HeroSection() {
           preload="auto"
         />
       </motion.div>
-      {/* Subtle warm-cinema grade */}
+      {/* Readability scrims — keep hero text high-contrast over any footage */}
+      {/* vertical: darken nav top + hero text bottom */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'linear-gradient(180deg, rgba(11,10,8,0.5) 0%, rgba(11,10,8,0.12) 28%, rgba(11,10,8,0.12) 58%, rgba(11,10,8,0.92) 100%)',
+            'linear-gradient(180deg, rgba(7,5,2,0.6) 0%, rgba(7,5,2,0.18) 24%, rgba(7,5,2,0.28) 52%, rgba(7,5,2,0.96) 100%)',
         }}
       />
+      {/* horizontal: darken the left column where the headline sits */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(7,5,2,0.65) 0%, rgba(7,5,2,0.2) 42%, rgba(7,5,2,0) 72%)',
+        }}
+      />
+      {/* gentle overall tint for consistent warmth */}
+      <div className="absolute inset-0 pointer-events-none bg-black/15" />
 
       {/* Navbar */}
       <div className="relative z-20 px-6 md:px-12 lg:px-16 pt-6">
