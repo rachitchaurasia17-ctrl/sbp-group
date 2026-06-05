@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative bg-[var(--bg)] py-24 md:py-36 px-6 md:px-12 lg:px-16 overflow-hidden">
+    <section id="contact" className="relative bg-[var(--bg)] border-t border-[var(--line)] py-20 md:py-28 px-6 md:px-12 lg:px-16 overflow-hidden">
       {/* Ambient gold glow */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
@@ -15,7 +15,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-12 md:mb-16"
         >
           <div className="inline-flex items-center gap-2.5 mb-6">
             <span className="w-8 h-px bg-[var(--gold)]" />

@@ -13,10 +13,10 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative bg-[var(--bg)] py-24 md:py-36 px-6 md:px-12 lg:px-16 overflow-hidden"
+      className="relative bg-[var(--bg)] border-t border-[var(--line)] py-20 md:py-28 px-6 md:px-12 lg:px-16 overflow-hidden"
     >
       {/* Section intro */}
-      <div className="max-w-7xl mx-auto mb-16 md:mb-24">
+      <div className="max-w-7xl mx-auto mb-12 md:mb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

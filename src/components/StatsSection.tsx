@@ -38,14 +38,14 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
 
 export default function StatsSection() {
   return (
-    <section className="relative bg-[var(--bg)] py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden">
+    <section className="relative bg-[var(--bg)] py-16 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="grid lg:grid-cols-12 gap-10 items-end mb-12 md:mb-16"
+          className="grid lg:grid-cols-12 gap-8 items-end mb-10 md:mb-12"
         >
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2.5 mb-6">
@@ -71,9 +71,7 @@ export default function StatsSection() {
           </div>
         </motion.div>
 
-        <div className="gold-line mb-12" />
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--line)] rounded-2xl overflow-hidden border border-[var(--line)]">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -81,6 +79,7 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
+              className="bg-[var(--bg)] p-8 md:p-10 group hover:bg-[var(--bg-elev)] transition-colors duration-500"
             >
               <div
                 className="font-display text-5xl md:text-6xl lg:text-7xl text-[var(--gold-soft)] mb-3 leading-none"

@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="media"
-      className="relative bg-black text-white py-24 md:py-32 overflow-hidden"
+      className="relative bg-[var(--bg)] border-t border-[var(--line)] py-20 md:py-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <motion.div
@@ -43,16 +43,18 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="mb-16"
+          className="mb-12 md:mb-16"
         >
-          <span className="text-xs tracking-[0.3em] text-white/50 uppercase">Voices of Trust</span>
+          <div className="inline-flex items-center gap-2.5 mb-5">
+            <span className="w-8 h-px bg-[var(--gold)]" />
+            <span className="text-[10px] tracking-[0.35em] uppercase text-[var(--gold-soft)]">Voices of Trust</span>
+          </div>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-light mt-4 max-w-3xl"
-            style={{ letterSpacing: '-0.03em' }}
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]"
+            style={{ letterSpacing: '-0.03em', color: 'var(--ivory)' }}
           >
             15,000+ keys.
-            <br />
-            <span className="text-white/40">15,000+ families.</span>
+            <span className="italic" style={{ color: 'var(--gold-soft)' }}> 15,000+ families.</span>
           </h2>
         </motion.div>
       </div>
@@ -67,15 +69,15 @@ export default function TestimonialsSection() {
           {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
             <div
               key={i}
-              className="shrink-0 w-[340px] md:w-[420px] liquid-glass border border-white/10 rounded-2xl p-7"
+              className="shrink-0 w-[340px] md:w-[440px] liquid-glass rounded-2xl p-7 md:p-8"
             >
-              <Quote className="w-6 h-6 text-white/30 mb-4" />
-              <p className="text-base md:text-lg text-white/90 leading-relaxed mb-6 font-light">
+              <Quote className="w-6 h-6 text-[var(--gold)] mb-4" />
+              <p className="font-display text-lg md:text-xl text-[var(--ivory)] leading-snug mb-6 font-light">
                 "{t.quote}"
               </p>
-              <div className="pt-4 border-t border-white/10">
-                <div className="text-sm font-medium">{t.name}</div>
-                <div className="text-xs text-white/50 mt-0.5">{t.location}</div>
+              <div className="pt-4 border-t border-[var(--line)]">
+                <div className="text-sm font-medium text-[var(--ivory)]">{t.name}</div>
+                <div className="text-xs text-[var(--muted)] mt-0.5">{t.location}</div>
               </div>
             </div>
           ))}
@@ -83,16 +85,16 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Press logos strip */}
-      <div className="mt-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div className="text-xs text-white/40 tracking-[0.3em] uppercase mb-6 text-center">As featured in</div>
-        <div className="relative overflow-hidden border-y border-white/10 py-6">
+      <div className="mt-16 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        <div className="text-[10px] text-[var(--muted)] tracking-[0.35em] uppercase mb-6 text-center">As featured in</div>
+        <div className="relative overflow-hidden border-y border-[var(--line)] py-6">
           <motion.div
             className="flex gap-16 whitespace-nowrap"
             animate={{ x: ['0%', '-50%'] }}
             transition={{ duration: 30, ease: 'linear', repeat: Infinity }}
           >
             {[...PRESS, ...PRESS, ...PRESS].map((name, i) => (
-              <span key={i} className="text-2xl md:text-3xl text-white/40 font-light tracking-tight">
+              <span key={i} className="font-display text-2xl md:text-3xl text-[var(--ivory)]/35 font-light tracking-tight">
                 {name}
               </span>
             ))}

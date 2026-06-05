@@ -1,4 +1,6 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import FadeIn from './FadeIn';
 
@@ -11,23 +13,57 @@ const ROUTE_LINKS = [
 ];
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Ensure the clip starts from frame 0 and keeps looping.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.currentTime = 0;
+    const play = () => v.play().catch(() => {});
+    play();
+    v.addEventListener('loadeddata', play);
+    return () => v.removeEventListener('loadeddata', play);
+  }, []);
+
+  // Scroll-driven parallax across the first viewport of scroll.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const videoY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1.12, 1.28]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
   return (
-    <section className="relative w-full h-screen flex flex-col overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/backgroundvideo.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+    <section ref={sectionRef} className="relative w-full h-screen flex flex-col overflow-hidden">
+      {/* Background Video (parallax) */}
+      <motion.div
+        className="absolute inset-0 will-change-transform"
+        style={{ y: videoY, scale: videoScale }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.4, ease: 'easeOut' }}
+      >
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          src="/backgroundvideo.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
+      </motion.div>
       {/* Subtle warm-cinema grade */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'linear-gradient(180deg, rgba(11,10,8,0.45) 0%, rgba(11,10,8,0.1) 30%, rgba(11,10,8,0.1) 60%, rgba(11,10,8,0.85) 100%)',
+            'linear-gradient(180deg, rgba(11,10,8,0.5) 0%, rgba(11,10,8,0.12) 28%, rgba(11,10,8,0.12) 58%, rgba(11,10,8,0.92) 100%)',
         }}
       />
 
@@ -78,7 +114,10 @@ export default function HeroSection() {
       </div>
 
       {/* Hero content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-end px-6 md:px-12 lg:px-16 pb-12 lg:pb-20">
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 flex-1 flex flex-col justify-end px-6 md:px-12 lg:px-16 pb-12 lg:pb-20"
+      >
         <FadeIn delay={300} duration={800}>
           <div className="inline-flex items-center gap-2.5 mb-8">
             <span className="w-8 h-px bg-[var(--gold)]" />
@@ -148,7 +187,7 @@ export default function HeroSection() {
             </FadeIn>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll hint */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden lg:flex flex-col items-center gap-2">

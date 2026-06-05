@@ -33,7 +33,7 @@ const PILLARS = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-[var(--bg)] py-24 md:py-36 px-6 md:px-12 lg:px-16 overflow-hidden">
+    <section className="relative bg-[var(--bg)] border-t border-[var(--line)] py-20 md:py-28 px-6 md:px-12 lg:px-16 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Intro */}
         <motion.div
@@ -41,7 +41,7 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-20 max-w-3xl"
+          className="mb-12 md:mb-16 max-w-3xl"
         >
           <div className="inline-flex items-center gap-2.5 mb-6">
             <span className="w-8 h-px bg-[var(--gold)]" />
@@ -60,7 +60,7 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* Pillars — alternating editorial */}
-        <div className="space-y-24 md:space-y-32">
+        <div className="space-y-16 md:space-y-24">
           {PILLARS.map((p, i) => (
             <motion.div
               key={p.id}

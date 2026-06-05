@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
+import MarqueeStrip from '../components/MarqueeStrip';
 import StatsSection from '../components/StatsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ServicesSection from '../components/ServicesSection';
+import WhySection from '../components/WhySection';
+import TestimonialsSection from '../components/TestimonialsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 
@@ -16,7 +19,6 @@ export default function HomePage() {
     if (target) {
       const el = document.getElementById(target);
       if (el) {
-        // wait a frame so layout is ready
         requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }));
       }
     }
@@ -25,9 +27,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <MarqueeStrip />
       <StatsSection />
       <ProjectsSection />
       <ServicesSection />
+      <WhySection />
+      <TestimonialsSection />
       <ContactSection />
       <Footer />
     </>
