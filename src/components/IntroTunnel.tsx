@@ -4,11 +4,11 @@ interface Props {
   onDone: () => void;
 }
 
-const DEPTH = 3200; // px — length of the room
+const DEPTH = 2600; // px — length of the room
 const DURATION = 3400; // ms of flight
-const PHRASE = 'BUILT ON TRUST · PROVEN BY DELIVERY · ';
-const ROWS = 9; // text rows per surface
-const REPEAT = 6; // phrase repeats per row
+const PHRASE = 'SBP · '; // short word tiles cleanly and reads big
+const ROWS = 6; // text rows per surface
+const REPEAT = 8; // phrase repeats per row
 
 function Rows() {
   const line = PHRASE.repeat(REPEAT);
@@ -39,10 +39,11 @@ export default function IntroTunnel({ onDone }: Props) {
     let finished = false;
     const start = performance.now();
 
-    // Room is centred at z=0 spanning ±DEPTH/2. Fly from the front edge
-    // through to past the back so the walls fill the screen throughout.
-    const FROM = -DEPTH / 2 + 200;
-    const TO = DEPTH / 2 + 200;
+    // Room is centred at z=0 spanning ±DEPTH/2. Start with the whole room
+    // ahead (camera at the front opening) and fly through to past the back,
+    // so the four walls fill the screen the entire time.
+    const FROM = -DEPTH / 2;
+    const TO = DEPTH / 2 + 300;
 
     const easeInOutCubic = (t: number) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;

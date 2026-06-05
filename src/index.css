@@ -130,39 +130,39 @@ body {
 
 .face {
   position: absolute;
+  top: 50%;
+  left: 50%;
   background: #000;
   overflow: hidden;
   backface-visibility: hidden;
   display: flex;
 }
 
-/* Floor & ceiling span the viewport width and run --d deep */
+/* Floor & ceiling span the viewport width and run --d deep.
+   Each face is centred, moved to its edge, then rotated so its inner
+   surface faces the camera — together they form a closed box. */
 .face-top,
 .face-bottom {
   width: 100vw;
   height: var(--d);
-  left: 0;
-  top: 50%;
-}
-.face-top {
-  transform: rotateX(90deg) translateZ(50vh);
 }
 .face-bottom {
-  transform: rotateX(-90deg) translateZ(50vh);
+  transform: translate(-50%, -50%) translateY(50vh) rotateX(90deg);
+}
+.face-top {
+  transform: translate(-50%, -50%) translateY(-50vh) rotateX(-90deg);
 }
 /* Left & right walls span the viewport height and run --d deep */
 .face-left,
 .face-right {
   width: var(--d);
   height: 100vh;
-  top: 0;
-  left: 50%;
 }
 .face-left {
-  transform: rotateY(90deg) translateZ(50vw);
+  transform: translate(-50%, -50%) translateX(-50vw) rotateY(90deg);
 }
 .face-right {
-  transform: rotateY(-90deg) translateZ(50vw);
+  transform: translate(-50%, -50%) translateX(50vw) rotateY(-90deg);
 }
 
 /* Densely tiled gold typography filling each surface */
@@ -183,11 +183,11 @@ body {
   overflow: hidden;
   text-align: center;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 600;
-  font-size: clamp(54px, 8.5vmin, 150px);
+  font-weight: 700;
+  font-size: clamp(120px, 17vmin, 300px);
   line-height: 1;
-  letter-spacing: 0.06em;
-  /* flat gold — far cheaper to rasterize than background-clip:text x36 */
+  letter-spacing: 0.04em;
+  /* flat gold — far cheaper to rasterize than background-clip:text */
   color: #c9a14a;
 }
 /* nearer rows read brighter for depth */
@@ -196,31 +196,31 @@ body {
   color: #e6c98c;
 }
 
-/* Soft golden vanishing-point glow (gentle, not a flash) */
+/* Small soft glow marking the vanishing point (subtle — walls stay visible) */
 .intro-core {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 55vmin;
-  height: 55vmin;
+  width: 34vmin;
+  height: 34vmin;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  background: radial-gradient(circle, rgba(255, 226, 160, 0.45) 0%, rgba(201, 161, 74, 0.18) 32%, transparent 66%);
-  filter: blur(10px);
+  background: radial-gradient(circle, rgba(255, 226, 160, 0.35) 0%, rgba(201, 161, 74, 0.12) 35%, transparent 68%);
+  filter: blur(12px);
   animation: intro-core 3.4s cubic-bezier(0.5, 0, 0.4, 1) forwards;
 }
 @keyframes intro-core {
-  0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.45); }
-  75% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.2); }
-  100% { opacity: 0.9; transform: translate(-50%, -50%) scale(2.6); }
+  0% { opacity: 0.25; transform: translate(-50%, -50%) scale(0.4); }
+  80% { opacity: 0.45; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.8); }
 }
 
-/* Edge vignette to deepen the corridor */
+/* Gentle corner vignette only — keeps the gold walls fully visible */
 .intro-vignette {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 38%, rgba(0, 0, 0, 0.92) 86%);
+  background: radial-gradient(ellipse at center, transparent 62%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .intro-center {
