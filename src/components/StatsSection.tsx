@@ -38,8 +38,12 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
 
 export default function StatsSection() {
   return (
-    <section className="relative bg-[var(--bg)] py-16 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative bg-[var(--bg-elev)] py-16 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
+      <div
+        className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(201,161,74,0.07) 0%, transparent 70%)' }}
+      />
+      <div className="relative max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +75,7 @@ export default function StatsSection() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--line)] rounded-2xl overflow-hidden border border-[var(--line)]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -79,7 +83,11 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="bg-[var(--bg)] p-8 md:p-10 group hover:bg-[var(--bg-elev)] transition-colors duration-500"
+              className="rounded-2xl p-8 md:p-10 border border-[rgba(201,161,74,0.18)] transition-all duration-500 hover:border-[rgba(201,161,74,0.45)] hover:-translate-y-1"
+              style={{
+                background:
+                  'linear-gradient(155deg, rgba(40,29,13,0.5) 0%, rgba(24,18,10,0.55) 55%, rgba(17,12,6,0.6) 100%)',
+              }}
             >
               <div
                 className="font-display text-5xl md:text-6xl lg:text-7xl text-[var(--gold-soft)] mb-3 leading-none"
