@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0a08;
+  --bg-elev: #14110d;
+  --ivory: #f5efe4;
+  --ivory-dim: #d8d0c1;
+  --muted: #8a8275;
+  --line: rgba(245, 239, 228, 0.08);
+  --gold: #c9a14a;
+  --gold-soft: #e6c98c;
+  --champagne: #d4b87a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--ivory);
+  scroll-behavior: smooth;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Premium serif accent */
+.font-display {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* Liquid Glass — refined */
+.liquid-glass {
+  background: rgba(11, 10, 8, 0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(245, 239, 228, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(245, 239, 228, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold accent line */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gold) 20%,
+    var(--gold-soft) 50%,
+    var(--gold) 80%,
+    transparent 100%
+  );
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elev);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ============================================ */
+/* 3D Tunnel Intro                              */
+/* ============================================ */
+
+.intro-tunnel {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  overflow: hidden;
+  /* smooth dissolve: fade + gentle push-through into the page */
+  transition: opacity 0.95s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.95s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.95s ease;
+}
+.intro-tunnel.intro-fade {
+  opacity: 0;
+  transform: scale(1.22);
+  filter: blur(6px);
+}
+
+.intro-stage {
+  position: absolute;
+  inset: 0;
+  perspective: 900px;
+  perspective-origin: 50% 50%;
+}
+
+/* A single deep room (4 long walls), camera flies through it */
+.intro-room {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.face {
+  position: absolute;
+  background: #000;
+  overflow: hidden;
+  backface-visibility: hidden;
+  display: flex;
+}
+
+/* Floor & ceiling span the viewport width and run --d deep */
+.face-top,
+.face-bottom {
+  width: 100vw;
+  height: var(--d);
+  left: 0;
+  top: 50%;
+}
+.face-top {
+  transform: rotateX(90deg) translateZ(50vh);
+}
+.face-bottom {
+  transform: rotateX(-90deg) translateZ(50vh);
+}
+/* Left & right walls span the viewport height and run --d deep */
+.face-left,
+.face-right {
+  width: var(--d);
+  height: 100vh;
+  top: 0;
+  left: 50%;
+}
+.face-left {
+  transform: rotateY(90deg) translateZ(50vw);
+}
+.face-right {
+  transform: rotateY(-90deg) translateZ(50vw);
+}
+
+/* Densely tiled gold typography filling each surface */
+.t-rows {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 3vmin 0;
+}
+.face-top .t-rows {
+  transform: rotate(180deg); /* ceiling mirrors the floor */
+}
+.t-row {
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(54px, 8.5vmin, 150px);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  /* flat gold — far cheaper to rasterize than background-clip:text x36 */
+  color: #c9a14a;
+}
+/* nearer rows read brighter for depth */
+.t-row:first-child,
+.t-row:last-child {
+  color: #e6c98c;
+}
+
+/* Soft golden vanishing-point glow (gentle, not a flash) */
+.intro-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 55vmin;
+  height: 55vmin;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 226, 160, 0.45) 0%, rgba(201, 161, 74, 0.18) 32%, transparent 66%);
+  filter: blur(10px);
+  animation: intro-core 3.4s cubic-bezier(0.5, 0, 0.4, 1) forwards;
+}
+@keyframes intro-core {
+  0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.45); }
+  75% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.2); }
+  100% { opacity: 0.9; transform: translate(-50%, -50%) scale(2.6); }
+}
+
+/* Edge vignette to deepen the corridor */
+.intro-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0, 0, 0, 0.92) 86%);
+}
+
+.intro-center {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  animation: intro-logo 3.4s ease-out forwards;
+}
+.intro-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(80px, 12vw, 200px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #fbe6bf 0%, #d8b25c 55%, #9c7426 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 80px rgba(201, 161, 74, 0.5);
+}
+.intro-rule {
+  width: 0;
+  height: 1px;
+  margin: 1.4rem 0;
+  background: linear-gradient(90deg, transparent, #d8b25c, transparent);
+  animation: intro-rule 3.4s ease-out forwards;
+}
+@keyframes intro-rule {
+  0%, 64% { width: 0; opacity: 0; }
+  82% { width: 220px; opacity: 1; }
+  100% { width: 260px; opacity: 1; }
+}
+.intro-sub {
+  font-size: clamp(10px, 1.2vw, 13px);
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: #e6c98c;
+}
+@keyframes intro-logo {
+  0%, 60% { opacity: 0; transform: scale(0.94); }
+  76% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.03); }
+}
+
+/* Gold underline hover */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Magnetic button glow */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
+  color: var(--bg);
+  transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--champagne) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-gold:hover::before { opacity: 1; }
+.btn-gold:hover {
+  box-shadow: 0 10px 40px rgba(201, 161, 74, 0.4);
+  transform: translateY(-2px);
+}
+.btn-gold > * { position: relative; z-index: 1; }
+
+.btn-ghost {
+  border: 1px solid rgba(245, 239, 228, 0.2);
+  color: var(--ivory);
+  transition: all 0.4s ease;
+  background: transparent;
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-soft);
+}
+
+/* Project card */
+.project-card-shadow {
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+}

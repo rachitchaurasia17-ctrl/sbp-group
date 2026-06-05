@@ -1,0 +1,35 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import HeroSection from '../components/HeroSection';
+import StatsSection from '../components/StatsSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ServicesSection from '../components/ServicesSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
+
+export default function HomePage() {
+  const location = useLocation();
+
+  // When arriving from another page with a scroll target, ease to it.
+  useEffect(() => {
+    const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (target) {
+      const el = document.getElementById(target);
+      if (el) {
+        // wait a frame so layout is ready
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }));
+      }
+    }
+  }, [location.state]);
+
+  return (
+    <>
+      <HeroSection />
+      <StatsSection />
+      <ProjectsSection />
+      <ServicesSection />
+      <ContactSection />
+      <Footer />
+    </>
+  );
+}
