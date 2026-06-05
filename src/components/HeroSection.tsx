@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import FadeIn from './FadeIn';
+import MobileMenu from './MobileMenu';
 
 // Anchor links scroll within the home page; route links open category pages.
 const ROUTE_LINKS = [
@@ -15,17 +16,30 @@ const ROUTE_LINKS = [
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  // Mobile gets a dedicated vertical-friendly clip; desktop the wide one.
+  const [videoSrc, setVideoSrc] = useState('/backgroundvideo.mp4');
 
-  // Ensure the clip starts from frame 0 and keeps looping.
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const apply = () => setVideoSrc(mq.matches ? '/mobilevideo.mp4' : '/backgroundvideo.mp4');
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, []);
+
+  // Reload + play from frame 0 whenever the source switches, and keep looping.
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    v.currentTime = 0;
-    const play = () => v.play().catch(() => {});
+    const play = () => {
+      v.currentTime = 0;
+      v.play().catch(() => {});
+    };
+    v.load();
     play();
     v.addEventListener('loadeddata', play);
     return () => v.removeEventListener('loadeddata', play);
-  }, []);
+  }, [videoSrc]);
 
   // Scroll-driven parallax across the first viewport of scroll.
   const { scrollYProgress } = useScroll({
@@ -49,8 +63,9 @@ export default function HeroSection() {
       >
         <video
           ref={videoRef}
+          key={videoSrc}
           className="w-full h-full object-cover"
-          src="/backgroundvideo.mp4"
+          src={videoSrc}
           autoPlay
           loop
           muted
@@ -102,13 +117,16 @@ export default function HeroSection() {
               </a>
             </div>
 
-            <a
-              href="#contact"
-              className="btn-gold px-5 md:px-7 py-2.5 rounded-full text-xs md:text-sm font-medium tracking-wide inline-flex items-center gap-2"
-            >
-              <span>Book a Visit</span>
-              <span className="text-base leading-none">→</span>
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="#contact"
+                className="hidden sm:inline-flex btn-gold px-5 md:px-7 py-2.5 rounded-full text-xs md:text-sm font-medium tracking-wide items-center gap-2"
+              >
+                <span>Book a Visit</span>
+                <span className="text-base leading-none">→</span>
+              </a>
+              <MobileMenu dark />
+            </div>
           </nav>
         </FadeIn>
       </div>

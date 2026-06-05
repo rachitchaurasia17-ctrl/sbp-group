@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ContactLink from './ContactLink';
+import MobileMenu from './MobileMenu';
 
 const LINKS: { label: string; to: string }[] = [
   { label: 'Residential', to: '/residential' },
@@ -36,10 +37,13 @@ export default function SiteNav() {
             ))}
           </div>
 
-          <ContactLink className="btn-gold px-5 md:px-7 py-2.5 rounded-full text-xs md:text-sm font-medium tracking-wide inline-flex items-center gap-2">
-            <span>Get in Touch</span>
-            <span className="text-base leading-none">→</span>
-          </ContactLink>
+          <div className="flex items-center gap-3">
+            <ContactLink className="hidden sm:inline-flex btn-gold px-5 md:px-7 py-2.5 rounded-full text-xs md:text-sm font-medium tracking-wide items-center gap-2">
+              <span>Get in Touch</span>
+              <span className="text-base leading-none">→</span>
+            </ContactLink>
+            <MobileMenu />
+          </div>
         </nav>
       </div>
     </header>

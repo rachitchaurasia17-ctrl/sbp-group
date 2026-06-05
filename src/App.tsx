@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import IntroTunnel from './components/IntroTunnel';
+import ChatBot from './components/ChatBot';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/project/:slug" element={<ProjectDetailPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
+      <ChatBot />
     </div>
   );
 }
