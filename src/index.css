@@ -331,6 +331,20 @@ body {
 }
 
 /* ============================================ */
+/* "What we build" expanding panels             */
+/* ============================================ */
+/* Sizing is driven by inline styles from React state; CSS only animates it. */
+.build-panel {
+  flex-shrink: 0;
+  transition:
+    width 0.7s cubic-bezier(0.65, 0, 0.35, 1),
+    height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.build-img {
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================ */
 /* CSS marquee — reliable on mobile (no JS loop) */
 /* ============================================ */
 .marquee {
