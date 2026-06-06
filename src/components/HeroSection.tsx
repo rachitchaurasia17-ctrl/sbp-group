@@ -18,10 +18,16 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   // Mobile gets a dedicated vertical-friendly clip; desktop the wide one.
   const [videoSrc, setVideoSrc] = useState('/backgroundvideo.mp4');
+  // Parallax only on larger screens — transforming a playing <video> while
+  // scrolling janks/pauses it on mobile GPUs.
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)');
-    const apply = () => setVideoSrc(mq.matches ? '/mobilevideo.mp4' : '/backgroundvideo.mp4');
+    const apply = () => {
+      setIsMobile(mq.matches);
+      setVideoSrc(mq.matches ? '/mobilevideo.mp4' : '/backgroundvideo.mp4');
+    };
     apply();
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
@@ -46,17 +52,17 @@ export default function HeroSection() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
-  const videoY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1.12, 1.28]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.16]);
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section ref={sectionRef} className="relative w-full h-screen flex flex-col overflow-hidden">
-      {/* Background Video (parallax) */}
+      {/* Background Video — parallax on desktop, static on mobile */}
       <motion.div
-        className="absolute inset-0 will-change-transform"
-        style={{ y: videoY, scale: videoScale }}
+        className={`absolute inset-0 ${isMobile ? '' : 'will-change-transform'}`}
+        style={isMobile ? undefined : { y: videoY, scale: videoScale }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.4, ease: 'easeOut' }}
@@ -71,6 +77,10 @@ export default function HeroSection() {
           muted
           playsInline
           preload="auto"
+          // @ts-expect-error vendor attrs improve mobile autoplay stability
+          disableRemotePlayback=""
+          x5-playsinline="true"
+          webkit-playsinline="true"
         />
       </motion.div>
       {/* Readability scrims — keep hero text high-contrast over any footage */}
@@ -144,7 +154,7 @@ export default function HeroSection() {
 
       {/* Hero content */}
       <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
+        style={isMobile ? undefined : { y: contentY, opacity: contentOpacity }}
         className="relative z-10 flex-1 flex flex-col justify-end px-6 md:px-12 lg:px-16 pb-12 lg:pb-20"
       >
         <FadeIn delay={300} duration={800}>
