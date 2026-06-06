@@ -99,6 +99,7 @@ export default function HeroSection() {
           key={videoSrc}
           className="w-full h-full object-cover"
           src={videoSrc}
+          poster={videoSrc.includes('mobile') ? '/mobileposter.jpg' : '/heroposter.jpg'}
           autoPlay
           loop
           muted
