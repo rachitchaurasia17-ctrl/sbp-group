@@ -375,3 +375,38 @@ body {
     animation: none;
   }
 }
+
+/* ============================================ */
+/* "Why M PRO" — animated colour / aurora       */
+/* ============================================ */
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(7%, -5%, 0) scale(1.18); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes sheen-x {
+  0%   { transform: translateX(-120%); }
+  60%, 100% { transform: translateX(120%); }
+}
+.aurora-blob { animation: aurora-drift 16s ease-in-out infinite; will-change: transform; }
+.aurora-blob.alt { animation: aurora-drift 21s ease-in-out infinite reverse; }
+.spin-ring { animation: spin-slow 14s linear infinite; will-change: transform; }
+
+/* sweeping highlight that runs across a reason row on hover */
+.reason-row { position: relative; overflow: hidden; }
+.reason-row .reason-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(244, 86, 75, 0.16) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.reason-row:hover .reason-sheen { animation: sheen-x 1.1s ease forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob, .aurora-blob.alt, .spin-ring { animation: none; }
+  .reason-row:hover .reason-sheen { animation: none; }
+}
