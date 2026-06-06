@@ -33,18 +33,46 @@ export default function HeroSection() {
     return () => mq.removeEventListener('change', apply);
   }, []);
 
-  // Reload + play from frame 0 whenever the source switches, and keep looping.
+  // Robustly start playback: the video mounts behind the full-screen intro
+  // overlay, so browsers often defer autoplay. We retry on every readiness
+  // event, on an interval that spans the intro, and on first interaction.
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    const play = () => {
-      v.currentTime = 0;
-      v.play().catch(() => {});
+    let cancelled = false;
+    const tryPlay = () => {
+      if (cancelled) return;
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
     };
+
     v.load();
-    play();
-    v.addEventListener('loadeddata', play);
-    return () => v.removeEventListener('loadeddata', play);
+    tryPlay();
+
+    const events = ['loadeddata', 'canplay', 'canplaythrough', 'stalled', 'suspend'];
+    events.forEach((e) => v.addEventListener(e, tryPlay));
+
+    // Keep nudging through the ~4s intro until it's actually playing.
+    const interval = window.setInterval(() => {
+      if (v.paused) tryPlay();
+      else window.clearInterval(interval);
+    }, 600);
+    const stopInterval = window.setTimeout(() => window.clearInterval(interval), 8000);
+
+    const onInteract = () => tryPlay();
+    window.addEventListener('pointerdown', onInteract, { once: true });
+    window.addEventListener('scroll', onInteract, { passive: true, once: true });
+    document.addEventListener('visibilitychange', tryPlay);
+
+    return () => {
+      cancelled = true;
+      events.forEach((e) => v.removeEventListener(e, tryPlay));
+      window.clearInterval(interval);
+      window.clearTimeout(stopInterval);
+      window.removeEventListener('pointerdown', onInteract);
+      window.removeEventListener('scroll', onInteract);
+      document.removeEventListener('visibilitychange', tryPlay);
+    };
   }, [videoSrc]);
 
   // Scroll-driven parallax across the first viewport of scroll.
@@ -59,13 +87,12 @@ export default function HeroSection() {
 
   return (
     <section ref={sectionRef} className="relative w-full h-screen flex flex-col overflow-hidden">
-      {/* Background Video — parallax on desktop, static on mobile */}
+      {/* Background Video — parallax on desktop, static on mobile.
+          Always visible (no opacity fade) so it can never get stuck hidden;
+          the intro tunnel's own dissolve provides the reveal. */}
       <motion.div
         className={`absolute inset-0 ${isMobile ? '' : 'will-change-transform'}`}
         style={isMobile ? undefined : { y: videoY, scale: videoScale }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.4, ease: 'easeOut' }}
       >
         <video
           ref={videoRef}
