@@ -70,7 +70,7 @@ export const PROJECTS: Project[] = [
     badge: 'Flagship',
     rera: 'PBRERA-SAS79-PR0832',
     overview:
-      'City of Dreams is SBP\'s flagship township — a self-contained world of landscaped boulevards, resort-grade amenities and thoughtfully planned 2 & 3 BHK homes. Designed for families who want the energy of a city with the calm of a private estate.',
+      'City of Dreams is M PRO\'s flagship township — a self-contained world of landscaped boulevards, resort-grade amenities and thoughtfully planned 2 & 3 BHK homes. Designed for families who want the energy of a city with the calm of a private estate.',
     highlights: [
       'Master-planned township across acres of green',
       'Resort-style clubhouse & infinity pool',
@@ -116,8 +116,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'sbp-f-towers',
-    name: 'SBP F Towers',
+    slug: 'mpro-f-towers',
+    name: 'M PRO F Towers',
     tagline: 'Ready to move. Ready to love.',
     category: 'residential',
     cover: '/projects/ftowers.webp',
@@ -130,7 +130,7 @@ export const PROJECTS: Project[] = [
     badge: 'Ready Soon',
     rera: 'PBRERA-LDH-PR0455',
     overview:
-      'SBP F Towers brings refined apartment living to the heart of Ludhiana. With possession around the corner, these 2 & 3 BHK homes pair smart layouts with a full suite of lifestyle amenities — move-in ready elegance.',
+      'M PRO F Towers brings refined apartment living to the heart of Ludhiana. With possession around the corner, these 2 & 3 BHK homes pair smart layouts with a full suite of lifestyle amenities — move-in ready elegance.',
     highlights: [
       'Possession-ready inventory',
       'Prime Canal Road West address',
@@ -146,8 +146,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'sbp-housing-park',
-    name: 'SBP Housing Park',
+    slug: 'mpro-housing-park',
+    name: 'M PRO Housing Park',
     tagline: 'Room to breathe, room to grow.',
     category: 'residential',
     cover: '/projects/housingpark.webp',
@@ -160,7 +160,7 @@ export const PROJECTS: Project[] = [
     badge: 'New',
     rera: 'PBRERA-SAS80-PR0788',
     overview:
-      'SBP Housing Park is a green-first residential community on the Chandigarh–Delhi Highway. Generous open spaces, tree-lined walkways and family-friendly amenities make it a calm retreat with citywide connectivity.',
+      'M PRO Housing Park is a green-first residential community on the Chandigarh–Delhi Highway. Generous open spaces, tree-lined walkways and family-friendly amenities make it a calm retreat with citywide connectivity.',
     highlights: [
       'Green-first master plan',
       'Excellent highway connectivity',
@@ -176,8 +176,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'sbp-parivaas',
-    name: 'SBP Parivaas',
+    slug: 'mpro-parivaas',
+    name: 'M PRO Parivaas',
     tagline: 'Built around family.',
     category: 'residential',
     cover: '/projects/parivaas.webp',
@@ -190,7 +190,7 @@ export const PROJECTS: Project[] = [
     badge: 'Family',
     rera: 'PBRERA-SAS82-PR0840',
     overview:
-      'SBP Parivaas is designed for multi-generational living — spacious 2 & 3 BHK homes set within a secure, amenity-rich enclave on the Banur growth corridor. A neighbourhood that grows with your family.',
+      'M PRO Parivaas is designed for multi-generational living — spacious 2 & 3 BHK homes set within a secure, amenity-rich enclave on the Banur growth corridor. A neighbourhood that grows with your family.',
     highlights: [
       'Multi-generational layouts',
       'Secure gated enclave',
@@ -206,8 +206,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'sbp-olympia',
-    name: 'SBP Olympia',
+    slug: 'mpro-olympia',
+    name: 'M PRO Olympia',
     tagline: 'An active life, by design.',
     category: 'residential',
     cover: '/projects/olympia.webp',
@@ -220,7 +220,7 @@ export const PROJECTS: Project[] = [
     badge: 'Value',
     rera: 'PBRERA-SAS83-PR0867',
     overview:
-      'SBP Olympia is built for movement — a sports-led community with courts, tracks and an athletic clubhouse at its heart. Smartly priced 2 & 3 BHK homes for buyers who want wellness woven into everyday life.',
+      'M PRO Olympia is built for movement — a sports-led community with courts, tracks and an athletic clubhouse at its heart. Smartly priced 2 & 3 BHK homes for buyers who want wellness woven into everyday life.',
     highlights: [
       'Sports-led master plan',
       'Athletic clubhouse',
@@ -273,8 +273,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'sbp-city-gate',
-    name: 'SBP City Gate',
+    slug: 'mpro-city-gate',
+    name: 'M PRO City Gate',
     tagline: 'Where commerce meets the crowd.',
     category: 'commercial',
     cover: I.retail2,
@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
     status: 'New Launch',
     badge: 'New Launch',
     overview:
-      'SBP City Gate blends retail and workspace into a single landmark — a gateway destination designed for brands that want to be seen. Flexible floor plates, signage-grade frontage and effortless connectivity.',
+      'M PRO City Gate blends retail and workspace into a single landmark — a gateway destination designed for brands that want to be seen. Flexible floor plates, signage-grade frontage and effortless connectivity.',
     highlights: [
       'Mixed-use retail + office',
       'Signage-grade frontage',
@@ -309,8 +309,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'sbp-siel-industrial-estate',
-    name: 'SBP SIEL Industrial Estate',
+    slug: 'mpro-siel-industrial-estate',
+    name: 'M PRO SIEL Industrial Estate',
     tagline: 'Built for the business of building.',
     category: 'industrial',
     cover: '/projects/siel.webp',
@@ -321,7 +321,7 @@ export const PROJECTS: Project[] = [
     status: 'Under Construction',
     badge: 'Industrial',
     overview:
-      'SBP SIEL Industrial Estate is a fully-serviced manufacturing destination at Rajpura — plug-and-play plots and units with the power, roads and approvals industry needs to move fast. Scale without the setup headache.',
+      'M PRO SIEL Industrial Estate is a fully-serviced manufacturing destination at Rajpura — plug-and-play plots and units with the power, roads and approvals industry needs to move fast. Scale without the setup headache.',
     highlights: [
       'Plug-and-play industrial units',
       'Wide internal road network',
@@ -344,8 +344,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'sbp-star-hills',
-    name: 'SBP Star Hills',
+    slug: 'mpro-star-hills',
+    name: 'M PRO Star Hills',
     tagline: 'Industry with an address.',
     category: 'industrial',
     cover: I.factory,
@@ -356,7 +356,7 @@ export const PROJECTS: Project[] = [
     status: 'Under Construction',
     badge: 'Industrial',
     overview:
-      'SBP Star Hills is a planned industrial park in Derabassi engineered for modern manufacturing and warehousing. Designed for efficiency, scale and a workforce-friendly environment.',
+      'M PRO Star Hills is a planned industrial park in Derabassi engineered for modern manufacturing and warehousing. Designed for efficiency, scale and a workforce-friendly environment.',
     highlights: [
       'Modern industrial park',
       'Warehouse-ready plots',
@@ -390,7 +390,7 @@ export const CATEGORY_META: Record<
   residential: {
     title: 'Residential',
     kicker: 'Homes from 1 to 4 BHK',
-    lede: 'Landmark homes across the Tricity — from value-smart apartments to panoramic sky residences, each delivered with SBP\'s signature on-time promise.',
+    lede: 'Landmark homes across the Tricity — from value-smart apartments to panoramic sky residences, each delivered with M PRO\'s signature on-time promise.',
     hero: '/projects/cityofdream.avif',
   },
   commercial: {

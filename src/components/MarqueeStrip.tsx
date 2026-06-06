@@ -1,12 +1,12 @@
 const ITEMS = [
-  'Built on Trust',
-  'Proven by Delivery',
-  '15,000+ Homes',
-  '18 Years',
-  '32 Landmarks',
+  'Passion. Perfection. Prosperity.',
+  'Redefining Real Estate',
+  'Founded 2021',
+  'Global Expertise',
+  'Research-Led',
   'Chandigarh · Mohali · Zirakpur · Ludhiana',
-  'RERA Certified',
-  'No.1 in Punjab',
+  'RERA Compliant',
+  'Advisory & Development',
 ];
 
 // Duplicate the set so translateX(-50%) loops seamlessly.

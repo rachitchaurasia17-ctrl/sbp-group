@@ -151,7 +151,7 @@ export default function CategoryPage() {
             Found something you love?
           </h2>
           <p className="text-[var(--ivory-dim)] mb-8 max-w-xl mx-auto">
-            Book a site visit and let an SBP advisor walk you through the {meta.title.toLowerCase()} portfolio in person.
+            Book a site visit and let an M PRO advisor walk you through the {meta.title.toLowerCase()} portfolio in person.
           </p>
           <ContactLink className="btn-gold inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium tracking-wide">
             <span>Book a Site Visit</span>

@@ -39,7 +39,7 @@ export default function ChatBot() {
         {
           role: 'assistant',
           content:
-            "I hit a snag reaching the server. Please try again in a moment — or call SBP directly at +91 93160 04242.",
+            "I hit a snag reaching the server. Please try again in a moment — or call M PRO directly at +91 93160 04242.",
         },
       ]);
     } finally {
@@ -57,8 +57,8 @@ export default function ChatBot() {
         aria-label="Open Rachit AI"
         className="!fixed bottom-5 right-5 z-[90] flex items-center gap-2.5 rounded-full pl-4 pr-5 py-3 shadow-2xl text-[var(--bg)] font-semibold tracking-wide"
         style={{
-          background: 'linear-gradient(135deg, #e6c98c 0%, #c9a14a 100%)',
-          boxShadow: '0 10px 40px rgba(201,161,74,0.45)',
+          background: 'linear-gradient(135deg, #f4564b 0%, #e02327 100%)',
+          boxShadow: '0 10px 40px rgba(224,35,39,0.45)',
         }}
       >
         {open ? <X className="w-5 h-5" /> : <Sparkles className="w-5 h-5" />}
@@ -83,7 +83,7 @@ export default function ChatBot() {
                 <div className="font-display text-xl leading-none text-[var(--ivory)]">Rachit AI</div>
                 <div className="text-[11px] text-[var(--muted)] mt-1 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  SBP Property &amp; Builder Advisor
+                  M PRO Property &amp; Builder Advisor
                 </div>
               </div>
               <button

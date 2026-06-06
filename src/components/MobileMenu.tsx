@@ -3,13 +3,14 @@ import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 const LINKS = [
   { label: 'Projects', to: '/', scrollTo: 'projects' },
+  { label: 'Leadership', to: '/', scrollTo: 'founders' },
   { label: 'Residential', to: '/residential' },
   { label: 'Commercial', to: '/commercial' },
   { label: 'Industrial', to: '/industrial' },
-  { label: 'SBP CSR', to: '/csr' },
   { label: 'Contact', to: '/', scrollTo: 'contact' },
 ];
 
@@ -38,7 +39,7 @@ export default function MobileMenu({ dark = false }: { dark?: boolean }) {
           style={{ background: 'rgba(7,5,2,0.98)', backdropFilter: 'blur(20px)' }}
         >
           <div className="flex items-center justify-between px-6 pt-6">
-            <span className="font-display text-3xl tracking-tight text-[var(--ivory)]">SBP</span>
+            <Logo size={28} />
             <button
               onClick={() => setOpen(false)}
               aria-label="Close menu"

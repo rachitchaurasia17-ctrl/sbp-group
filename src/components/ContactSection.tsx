@@ -46,7 +46,7 @@ export default function ContactSection() {
             transition={{ duration: 0.8 }}
             onSubmit={(e) => {
               e.preventDefault();
-              alert('Thank you. An SBP advisor will reach out within 24 hours.');
+              alert('Thank you. An M PRO advisor will reach out within 24 hours.');
             }}
             className="lg:col-span-3 liquid-glass rounded-2xl p-8 md:p-10 space-y-5"
           >
@@ -133,19 +133,19 @@ export default function ContactSection() {
             </a>
 
             <a
-              href="mailto:digital@sbpgroup.in"
+              href="mailto:info@mprodevelopers.com"
               className="block liquid-glass rounded-2xl p-7 hover:border-[var(--gold)] transition-all group"
             >
               <div className="text-[10px] text-[var(--gold-soft)] mb-2 uppercase tracking-[0.3em]">Email</div>
               <div className="text-lg md:text-xl text-[var(--ivory)] group-hover:text-[var(--gold-soft)] transition-colors break-all">
-                digital@sbpgroup.in
+                info@mprodevelopers.com
               </div>
             </a>
 
             <div className="liquid-glass rounded-2xl p-7">
               <div className="text-[10px] text-[var(--gold-soft)] mb-2 uppercase tracking-[0.3em]">Head Office</div>
               <div className="text-base text-[var(--ivory)] leading-relaxed">
-                SBP Group Corporate Office
+                M PRO Developers Corporate Office
                 <br />
                 <span className="text-[var(--muted)]">Chandigarh · Mohali · Zirakpur</span>
               </div>

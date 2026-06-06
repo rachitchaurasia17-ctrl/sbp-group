@@ -3,14 +3,14 @@ import { Quote } from 'lucide-react';
 
 const TESTIMONIALS = [
   {
-    quote: 'Got my keys two months ahead of schedule. SBP delivered exactly what was promised on the brochure.',
+    quote: 'Got my keys two months ahead of schedule. M PRO delivered exactly what was promised on the brochure.',
     name: 'Harpreet Singh',
     location: 'City of Dreams, Mohali',
   },
   {
-    quote: 'We compared every major builder in Zirakpur. SBP\'s amenity standard and finish quality stood out by a mile.',
+    quote: 'We compared every major builder in Zirakpur. M PRO\'s amenity standard and finish quality stood out by a mile.',
     name: 'Anjali Mehra',
-    location: 'SBP Housing Park',
+    location: 'M PRO Housing Park',
   },
   {
     quote: 'As an NRI, the after-sales coordination made the entire purchase feel effortless. Genuinely impressed.',
@@ -20,7 +20,7 @@ const TESTIMONIALS = [
   {
     quote: 'The clubhouse, the pool, the kids\' play deck — everything is exactly as the model showed.',
     name: 'Neha & Vikram',
-    location: 'SBP Parivaas, Banur',
+    location: 'M PRO Parivaas, Banur',
   },
   {
     quote: 'Booked our showroom at RIO ONE. The location and footfall projections were spot on.',
@@ -53,8 +53,8 @@ export default function TestimonialsSection() {
             className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]"
             style={{ letterSpacing: '-0.03em', color: 'var(--ivory)' }}
           >
-            15,000+ keys.
-            <span className="italic" style={{ color: 'var(--gold-soft)' }}> 15,000+ families.</span>
+            Trusted by families
+            <span className="italic" style={{ color: 'var(--gold-soft)' }}> and investors alike.</span>
           </h2>
         </motion.div>
       </div>

@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Shield, Award, Clock, Sparkles, Users, Leaf } from 'lucide-react';
 
 const FEATURES = [
-  { icon: Shield, t: 'RERA Certified', d: 'Every project registered, every promise documented.' },
-  { icon: Clock, t: 'On-Time Possession', d: 'A delivery record built across 32 completed projects.' },
-  { icon: Award, t: 'Award-Winning Designs', d: "Recognised as Punjab's No.1 housing brand for innovation." },
-  { icon: Sparkles, t: 'Premium Amenities', d: 'Rooftop pools, sports courts and fitness clubs as standard.' },
-  { icon: Users, t: 'Family-First Communities', d: 'Spaces engineered for connection, not just occupancy.' },
-  { icon: Leaf, t: 'Green by Default', d: 'Landscaped acres, sustainability woven into the plan.' },
+  { icon: Shield, t: 'RERA Compliant', d: 'Every engagement registered, every promise documented.' },
+  { icon: Clock, t: 'On-Time Delivery', d: 'Disciplined execution and transparent timelines — no surprises.' },
+  { icon: Award, t: 'Global Standards', d: 'Luxury expertise drawn from Miami, Kuala Lumpur and Frankfurt.' },
+  { icon: Sparkles, t: 'Premium by Design', d: 'Considered finishes, amenities and craftsmanship as standard.' },
+  { icon: Users, t: 'Client-First, Always', d: 'Tailored solutions and lasting, impactful relationships.' },
+  { icon: Leaf, t: 'Research-Driven', d: 'Every decision backed by deep, current market insight.' },
 ];
 
 export default function WhySection() {
@@ -33,14 +33,14 @@ export default function WhySection() {
         >
           <div className="inline-flex items-center gap-2.5 mb-5">
             <span className="w-8 h-px bg-[var(--gold)]" />
-            <span className="text-[10px] tracking-[0.35em] uppercase text-[var(--gold-soft)]">Why SBP</span>
+            <span className="text-[10px] tracking-[0.35em] uppercase text-[var(--gold-soft)]">Why M PRO</span>
           </div>
           <h2
             className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]"
             style={{ letterSpacing: '-0.03em', color: 'var(--ivory)' }}
           >
-            Six reasons families have trusted us
-            <span className="italic" style={{ color: 'var(--gold-soft)' }}> over 15,000 times.</span>
+            Six reasons clients choose
+            <span className="italic" style={{ color: 'var(--gold-soft)' }}> M PRO.</span>
           </h2>
         </motion.div>
 

@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const STATS = [
-  { value: 18, suffix: '+', label: 'Years of Trust', sub: 'Since 2007' },
-  { value: 15000, suffix: '+', label: 'Homes Delivered', sub: 'And counting' },
-  { value: 32, suffix: '', label: 'Projects Completed', sub: 'Across the Tricity' },
-  { value: 10, suffix: '', label: 'Ongoing Builds', sub: 'In construction now' },
+  { value: 30, suffix: '+', label: 'Years of Combined Expertise', sub: 'Across our founding team' },
+  { value: 3, suffix: '', label: 'Continents of Experience', sub: 'India · USA · Europe' },
+  { value: 100, suffix: '%', label: 'Client-First, Always', sub: 'Zero-compromise principles' },
+  { value: 4, suffix: '', label: 'Specialised Verticals', sub: 'Advisory & development' },
 ];
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
@@ -62,15 +62,15 @@ export default function StatsSection() {
               className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]"
               style={{ letterSpacing: '-0.03em', color: 'var(--ivory)' }}
             >
-              Eighteen years.
+              A new standard.
               <br />
               <span className="italic" style={{ color: 'var(--gold-soft)' }}>One promise kept.</span>
             </h2>
           </div>
           <div className="lg:col-span-5">
             <p className="text-base text-[var(--ivory-dim)] leading-relaxed max-w-md">
-              SBP is on a path to deliver one lakh keys over the next fourteen years.
-              Every number below is a family that already counted on us — and we delivered.
+              Founded in 2021, M PRO pairs global expertise with deep local insight — guiding
+              every client through Punjab's real estate landscape with research, integrity and zero compromise.
             </p>
           </div>
         </motion.div>

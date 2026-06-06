@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ContactLink from './ContactLink';
+import Logo from './Logo';
 
 type NavItem = { label: string; to?: string };
 
@@ -8,7 +9,6 @@ const NAV: Record<string, NavItem[]> = {
     { label: 'Residential', to: '/residential' },
     { label: 'Commercial', to: '/commercial' },
     { label: 'Industrial', to: '/industrial' },
-    { label: 'SBP CSR', to: '/csr' },
   ],
   Company: [
     { label: 'About' },
@@ -49,10 +49,10 @@ export default function Footer() {
               color: 'transparent',
             }}
           >
-            SBP Group
+            M PRO Developers
           </h2>
           <div className="font-display italic text-xl md:text-2xl text-[var(--gold-soft)] mt-4">
-            Built on Trust. Proven by Delivery.
+            Passion. Perfection. Prosperity.
           </div>
         </div>
       </div>
@@ -61,14 +61,9 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand block */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2.5">
-              <span className="font-display text-3xl text-[var(--ivory)]">SBP</span>
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] border-l border-white/15 pl-2.5">
-                Group
-              </span>
-            </div>
+            <Logo size={34} wordmarkClass="text-[var(--ivory)]" tagline />
             <p className="text-sm text-[var(--muted)] mt-5 max-w-xs leading-relaxed">
-              Punjab's No.1 housing brand. Eighteen years of crafting landmark addresses across the Tricity.
+              A premium real estate advisory and development firm in Punjab — redefining the sector with professionalism, integrity and global standards.
             </p>
             <div className="flex flex-wrap items-center gap-2 mt-6">
               {SOCIALS.map((s) => (
@@ -112,7 +107,7 @@ export default function Footer() {
         </div>
 
         <div className="max-w-7xl mx-auto mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-[var(--muted)]">
-          <div>© {new Date().getFullYear()} SBP Group. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} M PRO Developers. All rights reserved.</div>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a href="#" className="hover:text-[var(--gold-soft)] transition-colors">Disclaimer</a>
             <a href="#" className="hover:text-[var(--gold-soft)] transition-colors">Privacy Policy</a>

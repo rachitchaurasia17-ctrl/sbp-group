@@ -6,9 +6,9 @@ interface Props {
 
 const DEPTH = 2600; // px — length of the room
 const DURATION = 3400; // ms of flight
-const PHRASE = 'SBP · '; // short word tiles cleanly and reads big
+const PHRASE = 'M PRO · '; // short word tiles cleanly and reads big
 const ROWS = 6; // text rows per surface
-const REPEAT = 8; // phrase repeats per row
+const REPEAT = 7; // phrase repeats per row
 
 function Rows() {
   const line = PHRASE.repeat(REPEAT);
@@ -103,9 +103,9 @@ export default function IntroTunnel({ onDone }: Props) {
 
       {/* logo + tagline reveal */}
       <div className="intro-center">
-        <div className="intro-logo">SBP</div>
+        <div className="intro-logo">M PRO</div>
         <div className="intro-rule" />
-        <div className="intro-sub">Built on Trust · Since 2007</div>
+        <div className="intro-sub">Passion · Perfection · Prosperity</div>
       </div>
     </div>
   );

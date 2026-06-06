@@ -9,9 +9,10 @@
   --ivory-dim: #d8d0c1;
   --muted: #8a8275;
   --line: rgba(245, 239, 228, 0.08);
-  --gold: #c9a14a;
-  --gold-soft: #e6c98c;
-  --champagne: #d4b87a;
+  /* M PRO brand red (logo-matched). Variable names kept for clean cascade. */
+  --gold: #e02327;
+  --gold-soft: #f4564b;
+  --champagne: #b91d1a;
 }
 
 * {
@@ -187,13 +188,13 @@ body {
   font-size: clamp(120px, 17vmin, 300px);
   line-height: 1;
   letter-spacing: 0.04em;
-  /* flat gold — far cheaper to rasterize than background-clip:text */
-  color: #c9a14a;
+  /* flat brand red — far cheaper to rasterize than background-clip:text */
+  color: #e02327;
 }
 /* nearer rows read brighter for depth */
 .t-row:first-child,
 .t-row:last-child {
-  color: #e6c98c;
+  color: #f4564b;
 }
 
 /* Small soft glow marking the vanishing point (subtle — walls stay visible) */
@@ -205,7 +206,7 @@ body {
   height: 34vmin;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  background: radial-gradient(circle, rgba(255, 226, 160, 0.35) 0%, rgba(201, 161, 74, 0.12) 35%, transparent 68%);
+  background: radial-gradient(circle, rgba(255, 96, 88, 0.38) 0%, rgba(224, 35, 39, 0.14) 35%, transparent 68%);
   filter: blur(12px);
   animation: intro-core 3.4s cubic-bezier(0.5, 0, 0.4, 1) forwards;
 }
@@ -242,17 +243,17 @@ body {
   font-size: clamp(80px, 12vw, 200px);
   line-height: 1;
   letter-spacing: -0.02em;
-  background: linear-gradient(180deg, #fbe6bf 0%, #d8b25c 55%, #9c7426 100%);
+  background: linear-gradient(180deg, #ff6a5e 0%, #e02327 55%, #8e1f1c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 80px rgba(201, 161, 74, 0.5);
+  text-shadow: 0 0 80px rgba(224, 35, 39, 0.55);
 }
 .intro-rule {
   width: 0;
   height: 1px;
   margin: 1.4rem 0;
-  background: linear-gradient(90deg, transparent, #d8b25c, transparent);
+  background: linear-gradient(90deg, transparent, #e02327, transparent);
   animation: intro-rule 3.4s ease-out forwards;
 }
 @keyframes intro-rule {
@@ -264,7 +265,7 @@ body {
   font-size: clamp(10px, 1.2vw, 13px);
   letter-spacing: 0.55em;
   text-transform: uppercase;
-  color: #e6c98c;
+  color: #f4564b;
 }
 @keyframes intro-logo {
   0%, 60% { opacity: 0; transform: scale(0.94); }
@@ -309,7 +310,7 @@ body {
 }
 .btn-gold:hover::before { opacity: 1; }
 .btn-gold:hover {
-  box-shadow: 0 10px 40px rgba(201, 161, 74, 0.4);
+  box-shadow: 0 10px 40px rgba(224, 35, 39, 0.4);
   transform: translateY(-2px);
 }
 .btn-gold > * { position: relative; z-index: 1; }

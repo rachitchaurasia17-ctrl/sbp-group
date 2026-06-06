@@ -3,9 +3,11 @@ import { useLocation } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import MarqueeStrip from '../components/MarqueeStrip';
 import StatsSection from '../components/StatsSection';
+import PhilosophySection from '../components/PhilosophySection';
 import ProjectsSection from '../components/ProjectsSection';
 import ServicesSection from '../components/ServicesSection';
 import WhySection from '../components/WhySection';
+import FoundersSection from '../components/FoundersSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
@@ -29,9 +31,11 @@ export default function HomePage() {
       <HeroSection />
       <MarqueeStrip />
       <StatsSection />
+      <PhilosophySection />
       <ProjectsSection />
       <ServicesSection />
       <WhySection />
+      <FoundersSection />
       <TestimonialsSection />
       <ContactSection />
       <Footer />

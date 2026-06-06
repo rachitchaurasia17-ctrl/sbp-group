@@ -4,13 +4,13 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimatedHeading from './AnimatedHeading';
 import FadeIn from './FadeIn';
 import MobileMenu from './MobileMenu';
+import Logo from './Logo';
 
 // Anchor links scroll within the home page; route links open category pages.
 const ROUTE_LINKS = [
   { label: 'Residential', to: '/residential' },
   { label: 'Commercial', to: '/commercial' },
   { label: 'Industrial', to: '/industrial' },
-  { label: 'SBP CSR', to: '/csr' },
 ];
 
 export default function HeroSection() {
@@ -136,9 +136,9 @@ export default function HeroSection() {
         <FadeIn delay={100} duration={800}>
           <nav className="flex items-center justify-between">
             <a href="#" className="flex items-center gap-2.5">
-              <span className="font-display text-3xl tracking-tight text-[var(--ivory)]">SBP</span>
+              <Logo size={30} />
               <span className="hidden md:inline text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] border-l border-white/15 pl-2.5">
-                Group
+                Developers
               </span>
             </a>
 
@@ -148,6 +148,12 @@ export default function HeroSection() {
                 className="link-underline text-sm tracking-wide text-[var(--ivory)]/85 hover:text-[var(--ivory)] transition-colors"
               >
                 Projects
+              </a>
+              <a
+                href="#founders"
+                className="link-underline text-sm tracking-wide text-[var(--ivory)]/85 hover:text-[var(--ivory)] transition-colors"
+              >
+                Leadership
               </a>
               {ROUTE_LINKS.map((link) => (
                 <Link
@@ -189,13 +195,13 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2.5 mb-8">
             <span className="w-8 h-px bg-[var(--gold)]" />
             <span className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-[var(--gold-soft)]">
-              No.1 Housing Company in Punjab
+              Real Estate Advisory &amp; Development · Punjab
             </span>
           </div>
         </FadeIn>
 
         <AnimatedHeading
-          text={"Homes that\nshape the skyline."}
+          text={"Real estate,\nredefined."}
           className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] font-light text-[var(--ivory)] mb-6 leading-[0.95]"
           style={{ letterSpacing: '-0.03em' }}
           initialDelay={400}
@@ -206,8 +212,8 @@ export default function HeroSection() {
           <div className="lg:col-span-6">
             <FadeIn delay={1000} duration={1000}>
               <p className="text-base md:text-lg text-[var(--ivory-dim)] leading-relaxed max-w-xl">
-                Eighteen years. Thirty-two landmarks. Fifteen thousand keys delivered on time.
-                The Tricity's most trusted address — by record.
+                Founded in 2021 on global expertise and zero-compromise principles —
+                guiding Punjab's most discerning clients through development, advisory and everything in between.
               </p>
             </FadeIn>
 
@@ -234,9 +240,9 @@ export default function HeroSection() {
             <FadeIn delay={1500} duration={1000}>
               <div className="grid grid-cols-3 gap-6 md:gap-10">
                 {[
-                  { n: '18', s: 'Years' },
-                  { n: '15K+', s: 'Keys' },
-                  { n: '32', s: 'Projects' },
+                  { n: '2021', s: 'Founded' },
+                  { n: '30+', s: 'Yrs Expertise' },
+                  { n: '3', s: 'Continents' },
                 ].map((s) => (
                   <div key={s.s} className="text-left lg:text-right">
                     <div

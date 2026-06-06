@@ -5,7 +5,6 @@ import ChatBot from './components/ChatBot';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
-import CSRPage from './pages/CSRPage';
 
 export default function App() {
   const location = useLocation();
@@ -26,7 +25,6 @@ export default function App() {
         <Route path="/residential" element={<CategoryPage />} />
         <Route path="/commercial" element={<CategoryPage />} />
         <Route path="/industrial" element={<CategoryPage />} />
-        <Route path="/csr" element={<CSRPage />} />
         <Route path="/project/:slug" element={<ProjectDetailPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
